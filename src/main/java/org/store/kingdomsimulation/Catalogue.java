@@ -9,17 +9,17 @@ public class Catalogue
   private static Catalogue instance;
   private List<String> logs;
 
-  public Catalogue(){
+  private Catalogue(){
     logs = new ArrayList<>();
   }
 
-  public static Catalogue getInstance(){
+  public static synchronized Catalogue getInstance(){
     if(instance == null){
       instance = new Catalogue();
     }
     return instance;
   }
-  public void log(String message){
+  public synchronized void log(String message){
     logs.add(message);
     System.out.println(message);
   }

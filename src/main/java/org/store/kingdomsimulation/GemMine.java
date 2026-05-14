@@ -2,13 +2,12 @@ package org.store.kingdomsimulation;
 
 import org.store.kingdomsimulation.Gems.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GemMine
 {
   private Map<String, Gem> gemTypes = new HashMap<>();
+  Random random = new Random();
 
   public GemMine(){
     gemTypes.put("Diamond", new Diamond());
@@ -22,6 +21,13 @@ public class GemMine
   public Gem getGem(String type)
   {
     return gemTypes.get(type);
+  }
+
+  public Gem getRandomGem(){
+    List<Gem> gems = new ArrayList<>(gemTypes.values());
+
+
+    return gems.get(random.nextInt(gems.size()));
   }
 
 }
